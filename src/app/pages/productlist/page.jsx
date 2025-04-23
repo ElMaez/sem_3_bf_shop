@@ -3,7 +3,11 @@ import Card from "@/app/components/productlist/Card";
 import Filter from "@/app/components/productlist/Filter";
 import SearchBar from "@/app/components/productlist/SearchBar";
 
-export default function Productlist() {
+import { getProducts } from "@/app/lib/api";
+
+export default async function Productlist() {
+  const products = await getProducts();
+
   return (
     <main>
       <h1>Productlist</h1>
@@ -11,7 +15,10 @@ export default function Productlist() {
       <SearchBar />
 
       {/* mapping af products med return af Card */}
-      <Card />
+      <h1>Cards :</h1>
+      {products.map((item) => {
+        return <Card key={item.id} {...item} />;
+      })}
     </main>
   );
 }
