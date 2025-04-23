@@ -5,3 +5,10 @@ export async function getProducts() {
   console.log("api.js :", products);
   return products.products;
 }
+
+export async function getProductId(id) {
+  const data = await fetch(process.env.PRODUCTS_URL + `/${id}`);
+  const product = await data.json();
+  console.log("api.js :", product);
+  return product.product;
+}

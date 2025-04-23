@@ -4,10 +4,11 @@ import Gallery from "@/app/components/product/Gallery";
 import Reviews from "@/app/components/product/Reviews";
 import Button from "@/app/components/other/Button";
 
-export default function Product() {
+export default async function Product() {
+  const product = await getProductId();
   return (
     <main>
-      <h1>Product</h1>
+      <h1>{product.id}</h1>
       <Button />
       {/* Der skal vises product af id fået fra productlist */}
       <Gallery />
