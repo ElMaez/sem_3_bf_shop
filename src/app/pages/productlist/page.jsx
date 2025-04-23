@@ -7,7 +7,6 @@ import { getProducts } from "@/app/lib/api";
 
 export default async function Productlist() {
   const products = await getProducts();
-  console.log("Card compponont: ", products);
 
   return (
     <main>
@@ -16,7 +15,7 @@ export default async function Productlist() {
       <SearchBar />
 
       {/* mapping af products med return af Card */}
-
+      <h1>Cards :</h1>
       {products.map((item) => {
         return <Card key={item.id} {...item} />;
       })}
