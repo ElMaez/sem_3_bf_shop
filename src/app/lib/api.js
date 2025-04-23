@@ -6,9 +6,9 @@ export async function getProducts() {
   return products.products;
 }
 
-export async function getProductId(id) {
-  const data = await fetch(process.env.PRODUCTS_URL + `/${id}`);
-  const product = await data.json();
-  console.log("api.js :", product);
-  return product.product;
+export async function getItemId(id) {
+  const Itemdata = await fetch(process.env.PRODUCTS_URL + `/${id}`);
+  const item = await Itemdata.json();
+  console.log("api.js :", item);
+  return item.item;
 }
