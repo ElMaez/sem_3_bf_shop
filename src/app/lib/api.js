@@ -9,7 +9,6 @@ export async function getProducts() {
   return products.products;
 }
 
-<<<<<<< HEAD
 //Category API Fetch
 export async function getCategories() {
   const dataCategories = await fetch(
@@ -23,7 +22,7 @@ export async function getCategories() {
   const categories = await dataCategories.json();
   console.log("kategori-data", categories);
   return categories;
-=======
+}
 export async function getItemId(id) {
   const dataID = await fetch(process.env.PRODUCTS_URL + `/${id}`, {
     next: {
@@ -33,5 +32,4 @@ export async function getItemId(id) {
   const item = await dataID.json();
   console.log("api.js ID :", item);
   return item;
->>>>>>> 0d15d9dfd6928d59781643b3a1876e52bd4a56c1
 }
