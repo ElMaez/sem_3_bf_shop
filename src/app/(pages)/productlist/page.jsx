@@ -12,6 +12,7 @@ export default async function Productlist() {
     <main>
       <h1>Dette er Productlist siden</h1>
       <Filter />
+
       <SearchBar />
 
       <h1>Cards :</h1>
