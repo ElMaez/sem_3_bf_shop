@@ -1,7 +1,36 @@
 import { getProducts } from "@/app/lib/api";
 import Basket from "./Basket";
 
-export default async function BasketServerSide() {
-  const products = await getProducts();
-  return <Basket />;
+export async function getServerSideProps() {
+  try {
+    const fetchData = getProducts();
+    console.log("ER i Basket server", fetchData);
+    return {
+      props: {
+        products: data.products || [],
+      },
+    };
+  } catch (error) {
+    console.error("Fejl ved hentning af produkter:", error);
+    return {
+      props: {
+        products: [],
+      },
+    };
+  }
 }
+
+const ProductsPage = ({ product }) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {product.map((products) => (
+        <Basket key={products.id} products={product} />
+      ))}
+    </div>
+  );
+};
+
+export default ProductsPage;
+
+// const products = await getProducts();
+// return <Basket />;

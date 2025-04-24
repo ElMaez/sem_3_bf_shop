@@ -8,7 +8,6 @@ import useCartStore from "@/app/stores/increaseAmount";
 
 // Global
 export default function Basket() {
-  // const products = await getProducts();
   const cartItems = useCartStore((state) => state.items);
   const incrementQuantity = useCartStore(
     (state) => state.incrementItemQuantity
@@ -16,60 +15,49 @@ export default function Basket() {
   const decrementQuantity = useCartStore(
     (state) => state.decrementItemQuantity
   );
+  const removeItem = useCartStore((state) => state.removeItem);
+  const totalItems = useCartStore((state) => state.getTotalItems());
+  const totalPrice = useCartStore((state) => state.getTotalPrice());
 
   if (cartItems.length === 0) {
-    return <p>The shoppingCart is empty</p>;
+    return <p>Din indkøbskurv er tom.</p>;
   }
 
   return (
-    <div className="grid gap-4 ">
-      {products.map((item) => {
-        const cartItem = cartItems.find((Item) => cartItem.id === item.id);
-        const quantity = cartItem ? cartItem.quantity : 0;
-      })}
-      {products.map((item) => {
-        return (
-          <div
-            key={item.id}
-            className="grid grid-cols-3 grid-rows-2 bg-amber-700  p-4"
-          >
-            <div className="grid row-span-3 border-2 mx-4">
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">
+        ShoppingCart ({totalItems} items)
+      </h2>
+      <ul>
+        {cartItems.map((item) => {
+          <li key={item.id} className="flex item-center py-2 border-b">
+            <div className="relative w-16 h-16 mr-4">
               <Image
-                width={60}
-                height={60}
-                alt={item.title}
                 src={item.thumbnail}
-              />
+                alt={item.title}
+                layout="fill"
+                objectFit="cover"
+              ></Image>
             </div>
-            <section className="flex flex-col gap-3.5">
-              <div>
-                <h1>{item.title}</h1>
-              </div>
-              <div className="flex gap-4 col-start-2">
-                <p className="">{item.price}</p>
-                <p className=" bg-yellow-300 h-fit text-black">
-                  {item.discountPercentage}%
-                </p>
-              </div>
-            </section>
-            <section className="border-2 border-amber-300 grid col-start-3 items-center">
-              <div className="flex items-center gap-4 border-2 ">
-                <div className="w-8 border-2 flex justify-center p-1">
-                  <p>{quantity}</p>
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={() => incrementQuantity(item.id)}>
-                    <FaPlus />
-                  </button>
-                  <button onClick={() => decrementQuantity(item.id)}>
-                    <FaMinus />
-                  </button>
-                </div>
-              </div>
-            </section>
-          </div>
-        );
-      })}
+            <span className="mr-4">{item.title}</span>
+            <div className="flex items-center">
+              <button
+                onClick={() => decrementQuantity(item.id)}
+                className="bg-amber-300"
+              >
+                <FaPlus />
+              </button>
+            </div>
+            <span className="ml-auto">
+              {item.price * item.quantity * tofixed(2)}
+            </span>
+            <button onClick={() => decrementQuantity(item.id)}>
+              <FaMinus />
+            </button>
+          </li>;
+        })}
+      </ul>
+      <div className="mt-4 font-bold">Total: {totalPrice.tofixed(2)}</div>
     </div>
   );
 }
