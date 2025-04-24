@@ -8,14 +8,13 @@ import { getItemId } from "@/app/lib/api";
 export default async function Product({ params }) {
   const { id } = await params;
   const item = await getItemId(id);
-  console.log("productView page.jsx :", "product: ", item, "id: ", id);
   return (
     <main>
       <h1>{item.id} Her er et product</h1>
       <Button />
       {/* Der skal vises product af id fået fra productlist */}
       <Gallery />
-      <Reviews />
+      <Reviews {...item} />
     </main>
   );
 }
