@@ -10,11 +10,10 @@ export default async function Productlist() {
 
   return (
     <main>
-      <h1>Productlist</h1>
+      <h1>Dette er Productlist siden</h1>
       <Filter />
       <SearchBar />
 
-      {/* mapping af products med return af Card */}
       <h1>Cards :</h1>
       {products.map((item) => {
         return <Card key={item.id} {...item} />;
