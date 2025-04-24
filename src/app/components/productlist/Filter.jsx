@@ -1,5 +1,5 @@
-const Filter = () => {
-  return <h1>Filter</h1>;
+const Filter = ({ category }) => {
+  return <h1>{category}</h1>;
 };
 
 export default Filter;

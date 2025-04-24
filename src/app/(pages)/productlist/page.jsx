@@ -3,15 +3,20 @@ import Card from "@/app/components/productlist/Card";
 import Filter from "@/app/components/productlist/Filter";
 import SearchBar from "@/app/components/productlist/SearchBar";
 
-import { getProducts } from "@/app/lib/api";
+import { getCategories, getProducts } from "@/app/lib/api";
 
 export default async function Productlist() {
   const products = await getProducts();
+  const categories = await getCategories();
+  console.log("productlist, page ", categories);
 
   return (
     <main>
       <h1>Productlist</h1>
-      <Filter />
+      <h2>Categories:</h2>
+      {categories.map((category) => {
+        return <Filter key={category} category={category} />;
+      })}
       <SearchBar />
 
       {/* mapping af products med return af Card */}
