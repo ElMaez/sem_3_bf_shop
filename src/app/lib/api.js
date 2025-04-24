@@ -9,7 +9,7 @@ export async function getProducts() {
   return products.products;
 }
 
-export async function getProductId(id) {
+export async function getItemId(id) {
   const dataID = await fetch(process.env.PRODUCTS_URL + `/${id}`, {
     next: {
       revalidate: 3600, // cacher data i én time

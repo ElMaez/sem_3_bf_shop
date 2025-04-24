@@ -1,21 +1,23 @@
 import Image from "next/image";
-import Card from "@/app/components/productlist/Card";
+
 import Gallery from "@/app/components/product/Gallery";
 import Reviews from "@/app/components/product/Reviews";
 import Button from "@/app/components/other/Button";
+
 import { getItemId } from "@/app/lib/api";
 
-export default async function Product({ params }) {
+export default async function Home({params}) {
   const { id } = await params;
   const item = await getItemId(id);
-  console.log("productView page.jsx :", "product: ", item, "id: ", id);
+
+  console.log("id single page: ","item: ",item,"id: ",id )
   return (
     <main>
-      <h1>{item.id} Her er et product</h1>
-      <Button />
+      <h1>{id}</h1>
+      <Button {...item} />
       {/* Der skal vises product af id fået fra productlist */}
-      <Gallery />
-      <Reviews />
+      <Gallery {...item} />
+      <Reviews {...item} />
     </main>
   );
 }
