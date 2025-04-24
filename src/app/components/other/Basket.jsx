@@ -15,8 +15,9 @@ export default function Basket() {
   const decrementQuantity = useCartStore(
     (state) => state.decrementItemQuantity
   );
+
   const removeItem = useCartStore((state) => state.removeItem);
-  const totalItems = useCartStore((state) => state.getTotalItems());
+  // const totalItems = useCartStore((state) => state.getTotalItems());
   const totalPrice = useCartStore((state) => state.getTotalPrice());
 
   if (cartItems.length === 0) {
@@ -25,9 +26,7 @@ export default function Basket() {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">
-        ShoppingCart ({totalItems} items)
-      </h2>
+      <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
       <ul>
         {cartItems.map((item) => {
           <li key={item.id} className="flex item-center py-2 border-b">
@@ -42,7 +41,7 @@ export default function Basket() {
             <span className="mr-4">{item.title}</span>
             <div className="flex items-center">
               <button
-                onClick={() => decrementQuantity(item.id)}
+                onClick={() => incrementQuantity(item.id)}
                 className="bg-amber-300"
               >
                 <FaPlus />

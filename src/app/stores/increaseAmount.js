@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const useCartStore = create((set, get) => ({
-  item: [],
+  items: [],
 
   addItem: (item) => {
     set((state) => {
