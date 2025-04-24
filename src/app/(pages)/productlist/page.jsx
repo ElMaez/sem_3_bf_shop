@@ -12,14 +12,18 @@ export default async function Productlist() {
 
   return (
     <main>
+<<<<<<< HEAD
       <h1>Productlist</h1>
       <h2>Categories:</h2>
       {categories.map((category) => {
         return <Filter key={category} category={category} />;
       })}
+=======
+      <h1>Dette er Productlist siden</h1>
+      <Filter />
+>>>>>>> 0d15d9dfd6928d59781643b3a1876e52bd4a56c1
       <SearchBar />
 
-      {/* mapping af products med return af Card */}
       <h1>Cards :</h1>
       {products.map((item) => {
         return <Card key={item.id} {...item} />;
