@@ -20,11 +20,11 @@ export async function getServerSideProps() {
   }
 }
 
-const ProductsPage = ({ product }) => {
+const ProductsPage = ({ products }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {product.map((products) => (
-        <Basket key={products.id} products={product} />
+      {products.map((products) => (
+        <Basket key={products.id} products={products} />
       ))}
     </div>
   );
