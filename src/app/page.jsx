@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main>
       <h1>Main</h1>
-      <Button />
+      <Button link="/productlist" text="Go to products" />
       <BasketServerSide />
     </main>
   );

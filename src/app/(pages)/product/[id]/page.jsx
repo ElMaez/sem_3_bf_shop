@@ -6,17 +6,31 @@ import Button from "@/app/components/other/Button";
 
 import { getItemId } from "@/app/lib/api";
 
-export default async function Home({params}) {
+export default async function Home({ params }) {
   const { id } = await params;
   const item = await getItemId(id);
 
-  console.log("id single page: ","item: ",item,"id: ",id )
   return (
     <main>
-      <h1>{id}</h1>
+      <Gallery {...item} />
+      <ul>
+        <li>
+          <h1>{item.title}</h1>
+        </li>
+        <li>
+          <h2>{item.price}</h2>
+        </li>
+        <li>
+          <p>{id}</p>
+        </li>
+        <li>
+          <p>{item.description}</p>
+        </li>
+      </ul>
+
       <Button {...item} />
       {/* Der skal vises product af id fået fra productlist */}
-      <Gallery {...item} />
+
       <Reviews {...item} />
     </main>
   );

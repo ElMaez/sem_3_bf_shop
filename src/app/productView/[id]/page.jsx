@@ -11,6 +11,7 @@ export default async function Product({ params }) {
   return (
     <main>
       <h1>{item.id} Her er et product</h1>
+      <p className="bg-red">hej</p>
       <Button />
       {/* Der skal vises product af id fået fra productlist */}
       <Gallery />
