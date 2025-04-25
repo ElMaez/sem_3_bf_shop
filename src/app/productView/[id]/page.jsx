@@ -10,10 +10,21 @@ export default async function Product({ params }) {
   const item = await getItemId(id);
   return (
     <main>
-      <h1>{item.id} Her er et product</h1>
-      <Button />
-      {/* Der skal vises product af id fået fra productlist */}
       <Gallery />
+      <ul>
+        <li>
+          <h1>{item.title}</h1>
+        </li>
+        <li>
+          <p>{id} Her er et product</p>
+        </li>
+        <li>
+          <p>{item.description}</p>
+        </li>
+      </ul>
+
+      {/* Der skal vises product af id fået fra productlist */}
+
       <Reviews {...item} />
     </main>
   );
