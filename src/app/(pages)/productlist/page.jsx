@@ -8,6 +8,7 @@ import { getProducts } from "@/app/lib/api";
 export default async function Productlist() {
   const products = await getProducts();
 
+  
   return (
     <main>
       <h1>Dette er Productlist siden</h1>
