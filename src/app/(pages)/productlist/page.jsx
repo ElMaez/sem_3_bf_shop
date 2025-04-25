@@ -13,7 +13,7 @@ export default async function Productlist() {
       <h1>Dette er Productlist siden</h1>
       <Filter />
 
-      <SearchBar />
+      <SearchBar {...products}/>
 
       <h1>Cards :</h1>
       {products.map((item) => {

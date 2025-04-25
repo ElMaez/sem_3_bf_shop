@@ -16,6 +16,5 @@ export async function getItemId(id) {
     },
   });
   const item = await dataID.json();
-  console.log("api.js ID :", item);
   return item;
 }

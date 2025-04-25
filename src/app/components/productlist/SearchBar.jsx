@@ -1,12 +1,22 @@
-import Button from "../other/Button";
+"use client"
 
-const SearchBar = () => {
- const document.quarySelector("#")
+const SearchBar = (products) => {
+ const search = function searchBar () {
+
+const input = document.querySelector("#input")
+const submit = document.querySelector("#search")
+
+console.log(products)
+
+// if (input.value ==)
+
+console.log(input.value)
+ }
   return (
-    <forms>
-      <input type="text" placeholder="search here"></input>
-      <input type="button" value="Search"></input>
-    </forms>
+    <form>
+      <input id="input" type="search" placeholder="search here"></input>
+      <input id="search" type="button" value="Search" onClick={search}></input>
+    </form>
   );
 };
 
