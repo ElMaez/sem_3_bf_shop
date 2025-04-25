@@ -1,23 +1,28 @@
 "use client"
+import React, {useState} from "react";
 
 const SearchBar = (products) => {
- const search = function searchBar () {
+const input = {input, setInput} = useState("");
 
-const input = document.querySelector("#input")
-const submit = document.querySelector("#search")
+const fetchData = (value) => {
+  fetch("https://jsonplaceholder.typeicode.com/users").then((response)=> response.json()).then((json)=>{
+  console.log(json);
 
-console.log(products)
+  });
 
-// if (input.value ==)
+  const handleChange = (value)=> {
+  setInput(value);
+  fetchData(value);
+  }
 
-console.log(input.value)
- }
+  console.log("burde være id: ", products ," input value : ", input.value," tester: " )
+
+ 
   return (
     <form>
-      <input id="input" type="search" placeholder="search here"></input>
-      <input id="search" type="button" value="Search" onClick={search}></input>
+      <input value={input} placeholder="Type to search..." onChange={(e)=> setInput(e.target.value)}></input>
     </form>
   );
 };
-
+}
 export default SearchBar;

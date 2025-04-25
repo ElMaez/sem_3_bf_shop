@@ -17,8 +17,6 @@ export default async function Productlist() {
     <main>
       <h1>Dette er Productlist siden</h1>
       <Filter />
-
-      <SearchBar {...products}/>
   
       <ProductListClient
         categories={categoriesWithProducts}

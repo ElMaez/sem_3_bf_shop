@@ -20,7 +20,6 @@ export async function getCategories() {
     }
   );
   const categories = await dataCategories.json();
-  console.log("kategori-data", categories);
   return categories;
 }
 export async function getItemId(id) {

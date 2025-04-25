@@ -36,7 +36,7 @@ const ProductListClient = ({ categories, products }) => {
         ))}
       </div>
 
-      <SearchBar />
+      <SearchBar {...products} />
 
       <h2>Produkter:</h2>
       <div className="grid grid-cols-2 gap-4">
