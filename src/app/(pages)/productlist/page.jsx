@@ -2,12 +2,16 @@ import Image from "next/image";
 import Card from "@/app/components/productlist/Card";
 import Filter from "@/app/components/productlist/Filter";
 import SearchBar from "@/app/components/productlist/SearchBar";
-
-import { getProducts } from "@/app/lib/api";
+import ProductListClient from "@/app/components/productlist/ProductListClient";
+import { getCategories, getProducts } from "@/app/lib/api";
 
 export default async function Productlist() {
   const products = await getProducts();
+  const categories = await getCategories();
 
+  const categoriesWithProducts = categories.filter((category) => {
+    return products.some((product) => product.category === category);
+  });
   
   return (
     <main>
@@ -15,11 +19,11 @@ export default async function Productlist() {
       <Filter />
 
       <SearchBar {...products}/>
-
-      <h1>Cards :</h1>
-      {products.map((item) => {
-        return <Card key={item.id} {...item} />;
-      })}
+  
+      <ProductListClient
+        categories={categoriesWithProducts}
+        products={products}
+      />
     </main>
   );
 }

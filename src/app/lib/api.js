@@ -9,6 +9,20 @@ export async function getProducts() {
   return products.products;
 }
 
+//Category API Fetch
+export async function getCategories() {
+  const dataCategories = await fetch(
+    process.env.PRODUCTS_URL + `/category-list`,
+    {
+      next: {
+        revalidate: 3600, // cacher data i én time
+      },
+    }
+  );
+  const categories = await dataCategories.json();
+  console.log("kategori-data", categories);
+  return categories;
+}
 export async function getItemId(id) {
   const dataID = await fetch(process.env.PRODUCTS_URL + `/${id}`, {
     next: {
