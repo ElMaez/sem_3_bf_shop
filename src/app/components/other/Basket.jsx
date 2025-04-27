@@ -4,6 +4,7 @@ import { getProducts } from "@/app/lib/api";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
+import { FaXmark } from "react-icons/fa6";
 //import states and Store
 import useCartStore from "@/app/stores/increaseAmount";
 import Button from "./Button";
@@ -30,13 +31,17 @@ export default function Basket() {
   return (
     <div className="p-4 border-2 border-red-600 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black">
       <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
-      <div></div>
       <ul className="flex flex-col gap-4">
         {cartItems.map((item) => (
           <li
             key={item.id}
-            className="flex item-center py-2 border-b w-fit gap-4 flex-col"
+            className="flex item-center py-2 border-b  gap-4 flex-col"
           >
+            <div className="flex justify-end">
+              <button onClick={() => removeItem(item.id)}>
+                <FaXmark size={24} />
+              </button>
+            </div>
             <div className="flex flex-row">
               <div className="relative w-16 h-16 mr-4">
                 <Image
