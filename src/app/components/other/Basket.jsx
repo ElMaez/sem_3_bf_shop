@@ -1,10 +1,12 @@
 "use client";
+import Link from "next/link";
 import { getProducts } from "@/app/lib/api";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 //import states and Store
 import useCartStore from "@/app/stores/increaseAmount";
+import Button from "./Button";
 
 // Global
 export default function Basket() {
@@ -26,36 +28,47 @@ export default function Basket() {
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4 border-2 border-red-600 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black">
       <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
-      <ul>
+      <ul className="flex flex-col gap-4">
         {cartItems.map((item) => (
-          <li key={item.id} className="flex item-center py-2 border-b">
-            <div className="relative w-16 h-16 mr-4">
-              <Image
-                src={item.images[0]}
-                alt={item.title}
-                layout="fill"
-                objectFit="cover"
-              ></Image>
+          <li
+            key={item.id}
+            className="flex item-center py-2 border-b w-fit gap-4 flex-col"
+          >
+            <div className="flex flex-row">
+              <div className="relative w-16 h-16 mr-4">
+                <Image
+                  src={item.images[0]}
+                  alt={item.title}
+                  layout="fill"
+                  objectFit="cover"
+                ></Image>
+              </div>
+              <span className="mr-4 flex items-center">{item.title}</span>
+              <div className="flex gap-4">
+                <button onClick={() => incrementQuantity(item.id)} className="">
+                  <FaPlus />
+                </button>
+                <button onClick={() => decrementQuantity(item.id)} className="">
+                  <FaMinus />
+                </button>
+              </div>
             </div>
-            <span className="mr-4">{item.title}</span>
-            <div className="flex items-center">
-              <button
-                onClick={() => incrementQuantity(item.id)}
-                className="bg-amber-300"
-              >
-                <FaPlus />
-              </button>
-            </div>
-            <span className="ml-auto">{item.price * item.quantity}</span>
-            <button onClick={() => decrementQuantity(item.id)}>
-              <FaMinus />
-            </button>
+            <span className="flex">
+              <p className="font-bold text-2xl">{item.price}$</p>
+            </span>
+            <span> Quantity: {item.quantity}</span>
           </li>
         ))}
       </ul>
-      <div className="mt-4 font-bold">Total: {totalPrice}</div>
+      <div className="mt-4 font-bold">Total: {totalPrice}$</div>
+      <Link
+        href={"/payment"}
+        className="bg-black text-white font-bold py-2 px-8 rounded-[0.5rem] w-fit"
+      >
+        go to payment
+      </Link>
     </div>
   );
 }

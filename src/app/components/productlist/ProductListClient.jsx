@@ -22,8 +22,6 @@ const ProductListClient = ({ categories, products }) => {
       : products.filter((product) =>
           selectedCategories.includes(product.category)
         );
-  //logikken for basket
-  // const addToBasket = //fortsæt her.
 
   return (
     <section>
