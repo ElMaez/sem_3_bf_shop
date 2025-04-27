@@ -30,6 +30,7 @@ export default function Basket() {
   return (
     <div className="p-4 border-2 border-red-600 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black">
       <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
+      <div></div>
       <ul className="flex flex-col gap-4">
         {cartItems.map((item) => (
           <li
