@@ -1,13 +1,15 @@
 "use client"
 import React, {useState} from "react";
 
-const SearchBar = (products) => {
+export const SearchBar = (products, {setResults}) => {
 const input = {input, setInput} = useState("");
 
 const fetchData = (value) => {
   fetch("https://jsonplaceholder.typeicode.com/users").then((response)=> response.json()).then((json)=>{
-  console.log(json);
-
+ const results =json.filter((user)=>{
+  return user && user.name && user.name.toLowerCase().includes(value)
+ });
+ setResults(results);
   });
 
   const handleChange = (value)=> {
@@ -20,7 +22,7 @@ const fetchData = (value) => {
  
   return (
     <form>
-      <input value={input} placeholder="Type to search..." onChange={(e)=> setInput(e.target.value)}></input>
+      <input value={input} placeholder="Type to search..." onChange={(e)=> handleChange(e.target.value)}></input>
     </form>
   );
 };

@@ -22,6 +22,9 @@ const ProductListClient = ({ categories, products }) => {
           selectedCategories.includes(product.category)
         );
 
+//  searchbar:
+const [results, setResults] = useState([]);
+
   return (
     <>
       <h2>Filter kategorier:</h2>
@@ -36,7 +39,7 @@ const ProductListClient = ({ categories, products }) => {
         ))}
       </div>
 
-      <SearchBar {...products} />
+      <SearchBar {...products} setResults={setResults}/>
 
       <h2>Produkter:</h2>
       <div className="grid grid-cols-2 gap-4">
