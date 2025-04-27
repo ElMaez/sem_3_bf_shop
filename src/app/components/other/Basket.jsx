@@ -8,6 +8,7 @@ import useCartStore from "@/app/stores/increaseAmount";
 
 // Global
 export default function Basket() {
+  //Zustand useStates
   const cartItems = useCartStore((state) => state.items);
   const incrementQuantity = useCartStore(
     (state) => state.incrementItemQuantity
@@ -28,11 +29,11 @@ export default function Basket() {
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
       <ul>
-        {cartItems.map((item) => {
+        {cartItems.map((item) => (
           <li key={item.id} className="flex item-center py-2 border-b">
             <div className="relative w-16 h-16 mr-4">
               <Image
-                src={item.thumbnail}
+                src={item.images[0]}
                 alt={item.title}
                 layout="fill"
                 objectFit="cover"
@@ -47,16 +48,14 @@ export default function Basket() {
                 <FaPlus />
               </button>
             </div>
-            <span className="ml-auto">
-              {item.price * item.quantity * tofixed(2)}
-            </span>
+            <span className="ml-auto">{item.price * item.quantity}</span>
             <button onClick={() => decrementQuantity(item.id)}>
               <FaMinus />
             </button>
-          </li>;
-        })}
+          </li>
+        ))}
       </ul>
-      <div className="mt-4 font-bold">Total: {totalPrice.tofixed(2)}</div>
+      <div className="mt-4 font-bold">Total: {totalPrice}</div>
     </div>
   );
 }

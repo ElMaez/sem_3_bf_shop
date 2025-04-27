@@ -4,18 +4,25 @@ const useCartStore = create((set, get) => ({
   items: [],
 
   addItem: (item) => {
-    set((state) => {
-      const existingItem = state.item.find((i) => i.id === item.id);
-      if (existingItem) {
-        return {
-          items: state.items.map((i) =>
-            i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-          ),
-        };
-      } else {
-        return { item: [...state.items, { ...item, quantity: 1 }] };
-      }
-    });
+    console.log("Produktet tilføjet til kurven!");
+
+    //Her er logikken for nyprisen:
+    const discountPercentage = item.discountPercentage / 100;
+    const newPrice = Math.floor(item.price * (1 - discountPercentage));
+
+    //logikken for tilføjelse af ny var & eller eksisterende.
+    const existingItem = get().items.find((i) => i.id === item.id);
+    if (existingItem) {
+      set((state) => ({
+        items: state.items.map((i) =>
+          i.id === item.id ? { ...i, quantity: (i.quantity || 1) + 1 } : i
+        ),
+      }));
+    } else {
+      set((state) => ({
+        items: [...state.items, { ...item, price: newPrice, quantity: 1 }],
+      }));
+    }
   },
 
   removeItem: (itemId) => {
@@ -59,5 +66,4 @@ const useCartStore = create((set, get) => ({
     );
   },
 }));
-
 export default useCartStore;
