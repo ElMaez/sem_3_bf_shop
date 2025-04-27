@@ -38,7 +38,10 @@ export default function Basket() {
             className="flex item-center py-2 border-b  gap-4 flex-col"
           >
             <div className="flex justify-end">
-              <button onClick={() => removeItem(item.id)}>
+              <button
+                onClick={() => removeItem(item.id)}
+                className="hover:bg-gray-400 cursor-pointer"
+              >
                 <FaXmark size={24} />
               </button>
             </div>
@@ -53,10 +56,16 @@ export default function Basket() {
               </div>
               <span className="mr-4 flex items-center">{item.title}</span>
               <div className="flex gap-4">
-                <button onClick={() => incrementQuantity(item.id)} className="">
+                <button
+                  onClick={() => incrementQuantity(item.id)}
+                  className="cursor-pointer"
+                >
                   <FaPlus />
                 </button>
-                <button onClick={() => decrementQuantity(item.id)} className="">
+                <button
+                  onClick={() => decrementQuantity(item.id)}
+                  className="cursor-pointer"
+                >
                   <FaMinus />
                 </button>
               </div>
