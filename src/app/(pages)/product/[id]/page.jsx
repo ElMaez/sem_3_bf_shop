@@ -11,27 +11,24 @@ export default async function Home({ params }) {
   const item = await getItemId(id);
 
   return (
-    <main>
-      <Gallery {...item} />
-      <ul>
-        <li>
-          <h1>{item.title}</h1>
-        </li>
-        <li>
-          <h2>{item.price}</h2>
-        </li>
-        <li>
-          <p>{id}</p>
-        </li>
-        <li>
-          <p>{item.description}</p>
-        </li>
-      </ul>
+    <main className="container mx-auto py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col">
+          <Gallery {...item} />
+        </div>
 
-      <Button {...item} />
-      {/* Der skal vises product af id fået fra productlist */}
+        <div className="flex flex-col justify-between">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">{item.title}</h1>
+            <h2 className="text-xl text-gray-700 mb-4">{item.price} $</h2>
+            <p className="text-[#747478] mb-6">{item.description}</p>
+          </div>
+        </div>
+      </div>
 
-      <Reviews {...item} />
+      <div className="mt-12">
+        <Reviews reviews={item.reviews} />
+      </div>
     </main>
   );
 }
