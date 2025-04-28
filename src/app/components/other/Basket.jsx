@@ -31,7 +31,7 @@ export default function Basket() {
     return null;
   }
   if (cartItems.length === 0) {
-    return <p>Din indkøbskurv er tom.</p>;
+    return <p className="font-bold">Your bag is empty.</p>;
   }
 
   return (
@@ -39,37 +39,29 @@ export default function Basket() {
       style={{
         positionAnchor: "--basket",
         inset: "auto 0 auto auto",
-        right: "1rem",
-        marginTop: "-6rem",
+        right: "2rem",
+        marginTop: "-5rem",
       }}
       className={`
         p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black z-20 absolute `}
     >
-      <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
-      <ul className="flex flex-col gap-4">
+      <h2 className="text-xl font-bold mb-4 text-center">Your bag</h2>
+      <ul className="flex flex-col gap-4 ">
         {cartItems.map((item) => (
           <li
             key={item.id}
-            className="flex item-center py-2 border-b  gap-4 flex-col"
+            className="grid grid-cols-[1fr 1fr 1fr] grid-rows-[repeat(3, 1fr)] py-2 border-b   gap-4 "
           >
-            <div className="flex justify-end">
-              <button
-                onClick={() => removeItem(item.id)}
-                className="hover:bg-gray-400 cursor-pointer"
-              >
-                <FaXmark size={24} />
-              </button>
+            <div className=" relative w-32 h-32 mr-4 flex items-stretch    m-auto">
+              <Image
+                src={item.images[0]}
+                alt={item.title}
+                layout="fill"
+                objectFit="cover"
+              ></Image>
             </div>
-            <div className="flex flex-row">
-              <div className="relative w-16 h-16 mr-4">
-                <Image
-                  src={item.images[0]}
-                  alt={item.title}
-                  layout="fill"
-                  objectFit="cover"
-                ></Image>
-              </div>
-              <span className="mr-4 flex items-center">{item.title}</span>
+            <div className=" flex flex-col  gap-4">
+              <span className="mr-4 flex items-center ">{item.title}</span>
               <div className="flex gap-4">
                 <button
                   onClick={() => incrementQuantity(item.id)}
@@ -84,18 +76,29 @@ export default function Basket() {
                   <FaMinus />
                 </button>
               </div>
+
+              <span className="flex">
+                <p className="font-bold ">{item.price}$</p>
+              </span>
+              <span> Quantity: {item.quantity}</span>
             </div>
-            <span className="flex">
-              <p className="font-bold text-2xl">{item.price}$</p>
-            </span>
-            <span> Quantity: {item.quantity}</span>
+            <div className=" justify-end grid col-end-4 row-end-2  w-fit">
+              <button
+                onClick={() => removeItem(item.id)}
+                className="hover:bg-gray-400 cursor-pointer"
+              >
+                <FaXmark size={24} />
+              </button>
+            </div>
           </li>
         ))}
       </ul>
-      <div className="mt-4 font-bold">Total: {totalPrice}$</div>
+      <div className="mt-8 font-bold flex justify-between">
+        <p>Total:</p> {totalPrice}$
+      </div>
       <Link
         href={"/payment"}
-        className="bg-black text-white font-bold py-2 px-8 rounded-[0.5rem] w-fit"
+        className="bg-black text-white font-bold py-2 px-8 rounded-[0.5rem]  mt-8 text-center"
       >
         go to payment
       </Link>

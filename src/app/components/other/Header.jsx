@@ -11,21 +11,21 @@ const Header = () => {
   const pathname = usePathname();
   const { toggleCart } = useCartStore();
   return (
-    <header className="flex  items-center p-4 justify-between  w-full">
+    <header className="flex  items-center p-4  w-full gap-4">
       <div>
         <Link href="/">
           <Image src={Logo} width={250} height={80} alt="logo" />
         </Link>
       </div>
-      <nav className=" flex">
+      <nav className=" flex  mr-auto">
         <ul className="flex flex-row gap-8">
           <li>
             <Link
               href="/"
               className={` ${
                 pathname === "/"
-                  ? "bg-white py-4 px-2 text-black font-bold"
-                  : "text-white  hover:underline "
+                  ? "bg-black py-4 px-2 text-white font-bold"
+                  : "text-black hover:underline  "
               }`}
             >
               Home
@@ -36,8 +36,8 @@ const Header = () => {
               href="/productlist"
               className={` ${
                 pathname === "/productlist"
-                  ? "bg-white py-4 px-2 text-black font-bold"
-                  : "text-white hover:underline "
+                  ? "bg-black py-4 px-2 text-white font-bold"
+                  : "text-black hover:underline "
               }`}
             >
               Product
@@ -46,7 +46,7 @@ const Header = () => {
         </ul>
       </nav>
       <div>
-        <button onClick={toggleCart} className="headerbasket cursor-pointer">
+        <button onClick={toggleCart} className=" headerbasket cursor-pointer ">
           <MdOutlineShoppingBag size={36} />
         </button>
       </div>
