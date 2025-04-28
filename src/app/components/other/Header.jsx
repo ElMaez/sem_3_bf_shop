@@ -4,8 +4,10 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Logo from "@/app/assets/img/logo.png";
+import useCartStore from "@/app/stores/increaseAmount";
 const Header = () => {
   const pathname = usePathname();
+  const { toggleCart } = useCartStore();
   return (
     <header className="flex items-center p-4 justify-between">
       <div>
@@ -41,8 +43,10 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="">
-        <MdOutlineShoppingBag size={36} />
+      <div>
+        <button onClick={toggleCart} className="cursor-pointer">
+          <MdOutlineShoppingBag size={36} />
+        </button>
       </div>
     </header>
   );

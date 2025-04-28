@@ -65,5 +65,11 @@ const useCartStore = create((set, get) => ({
       0
     );
   },
+
+  //usestate for shoppingCart icon
+  isCartOpen: false,
+  toggleCart: () =>
+    set((state) => ({ isCartOpen: !state.isCartOpen }), console.log("KURV")), // Rettet her!
 }));
+
 export default useCartStore;
