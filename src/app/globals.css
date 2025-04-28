@@ -29,3 +29,7 @@ body {
     grid-column: 2;
   }
 }
+
+.headerbasket {
+  anchor-name: --basket;
+}

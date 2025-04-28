@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import "@/app/globals.css";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { FaXmark } from "react-icons/fa6";
+
 //import states and Store
 import useCartStore from "@/app/stores/increaseAmount";
 import Button from "./Button";
@@ -11,6 +13,7 @@ import Button from "./Button";
 // Global
 export default function Basket() {
   //Zustand useStates
+
   const cartItems = useCartStore((state) => state.items);
   const incrementQuantity = useCartStore(
     (state) => state.incrementItemQuantity
@@ -23,12 +26,25 @@ export default function Basket() {
   // const totalItems = useCartStore((state) => state.getTotalItems());
   const totalPrice = useCartStore((state) => state.getTotalPrice());
 
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
+  if (!isCartOpen) {
+    return null;
+  }
   if (cartItems.length === 0) {
     return <p>Din indkøbskurv er tom.</p>;
   }
 
   return (
-    <div className="p-4 border-2 border-red-600 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black">
+    <div
+      style={{
+        positionAnchor: "--basket",
+        inset: "auto 0 auto auto",
+        right: "1rem",
+        marginTop: "-6rem",
+      }}
+      className={`
+        p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black z-20 absolute `}
+    >
       <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
       <ul className="flex flex-col gap-4">
         {cartItems.map((item) => (
