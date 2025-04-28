@@ -31,3 +31,14 @@ export async function getItemId(id) {
   const item = await dataID.json();
   return item;
 }
+
+// Search API
+export async function getSearch(input) {
+  const dataSearch = await fetch(process.env.SEARCH_URL + `${input}`, {
+    next: {
+      revalidate: 3600, // cacher data i én time
+    },
+  });
+  const search = await dataSearch.json();
+  return search;
+}

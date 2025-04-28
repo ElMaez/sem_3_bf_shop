@@ -1,30 +1,30 @@
 "use client"
-import React, {useState} from "react";
+import { getSearch } from "@/app/lib/api";
+import React, {useEffect, useState} from "react";
 
-export const SearchBar = (products, {setResults}) => {
-const input = {input, setInput} = useState("");
+export default function SearchBar() {
+const [searchInput, setSearchInput] = useState("");
+const [searchData, updateSearchData] = useState([])
 
-const fetchData = (value) => {
-  fetch("https://jsonplaceholder.typeicode.com/users").then((response)=> response.json()).then((json)=>{
- const results =json.filter((user)=>{
-  return user && user.name && user.name.toLowerCase().includes(value)
- });
- setResults(results);
-  });
+ useEffect( () =>{
+   const products = getSearch(searchInput).then(res => res.json());
+   console.log("her er products loggen: ",products)
+   updateSearchData(products)
+ },[searchInput]);
 
-  const handleChange = (value)=> {
-  setInput(value);
-  fetchData(value);
-  }
-
-  console.log("burde være id: ", products ," input value : ", input.value," tester: " )
+const handleSearch = (e) => {
+  e.preventDefault()
+  const newInput = e.target[0].value
+  setSearchInput(newInput)
+}
+console.log("her burde være SearchData: ", searchData)
 
  
   return (
-    <form>
-      <input value={input} placeholder="Type to search..." onChange={(e)=> handleChange(e.target.value)}></input>
+    <form onSubmit={handleSearch}>
+      <input placeholder="Type to search..." ></input>
+      <button type="submit">Search</button>
     </form>
   );
 };
-}
-export default SearchBar;
+
