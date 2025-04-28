@@ -14,7 +14,7 @@ export default async function Productlist() {
   });
   return (
     <main>
-      <h1>Productlist</h1>
+      <h1 className="text-2xl">Products</h1>
 
       <ProductListClient
         categories={categoriesWithProducts}
