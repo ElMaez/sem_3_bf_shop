@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import "@/app/globals.css";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { FaXmark } from "react-icons/fa6";
-import { MdOutlineShoppingBag } from "react-icons/md";
+
 //import states and Store
 import useCartStore from "@/app/stores/increaseAmount";
 import Button from "./Button";
@@ -34,7 +35,16 @@ export default function Basket() {
   }
 
   return (
-    <div className="p-4 border-2 border-red-600 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black z-20 absolute">
+    <div
+      style={{
+        positionAnchor: "--basket",
+        inset: "auto 0 auto auto",
+        right: "1rem",
+        marginTop: "-6rem",
+      }}
+      className={`
+        p-4 border-2 border-red-600 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black z-20 absolute `}
+    >
       <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
       <ul className="flex flex-col gap-4">
         {cartItems.map((item) => (
