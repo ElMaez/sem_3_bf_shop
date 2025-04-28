@@ -32,7 +32,7 @@ const Gallery = ({ images }) => {
         {selectedImage && (
           <Image
             src={selectedImage}
-            alt="Produktbillede"
+            alt="Product picture"
             className="object-contain max-w-full max-h-[500px]"
             width={500}
             height={500}
