@@ -33,6 +33,7 @@ const ProductListClient = ({ categories, products }) => {
 
   return (
     <section>
+      <Basket />
       <h2 className="text-xl font-light mb-2">Categories</h2>
       <div className="mb-6 flex items-center justify-between">
         <div className="flex flex-wrap gap-4">
@@ -53,10 +54,6 @@ const ProductListClient = ({ categories, products }) => {
         {filteredProducts.map((item) => (
           <Card key={item.id} {...item} />
         ))}
-      </div>
-
-      <div className="mt-8">
-        <Basket />
       </div>
     </section>
   );

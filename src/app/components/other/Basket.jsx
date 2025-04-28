@@ -40,10 +40,10 @@ export default function Basket() {
         positionAnchor: "--basket",
         inset: "auto 0 auto auto",
         right: "1rem",
-        marginTop: "-6rem",
+        marginTop: "-3rem",
       }}
       className={`
-        p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black z-20 absolute `}
+        p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black z-20 absolute`}
     >
       <h2 className="text-xl font-bold mb-4">ShoppingCart</h2>
       <ul className="flex flex-col gap-4">
