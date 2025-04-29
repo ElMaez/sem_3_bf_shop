@@ -15,7 +15,11 @@ const Header = () => {
     <header className="flex  items-center p-4  w-full gap-4">
       <div>
         <Link href="/">
-          <Image src={Logo} style={{ width: '100%', height: 'auto' }} alt="logo" />
+          <Image
+            src={Logo}
+            style={{ width: "100%", height: "auto" }}
+            alt="logo"
+          />
         </Link>
       </div>
       <nav className=" flex  mr-auto">
