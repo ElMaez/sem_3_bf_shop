@@ -5,6 +5,7 @@ import Reviews from "@/app/components/product/Reviews";
 import Button from "@/app/components/other/Button";
 
 import { getItemId } from "@/app/lib/api";
+import Basket from "@/app/components/other/Basket";
 
 export default async function Home({ params }) {
   const { id } = await params;
@@ -17,6 +18,7 @@ export default async function Home({ params }) {
 
   return (
     <main className="container mx-auto py-8">
+      <Basket />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex flex-col">
           <Gallery {...item} />
@@ -44,10 +46,12 @@ export default async function Home({ params }) {
                 Out of stock
               </span>
             )}
+
+            <Button link="" text="Payment" isFilled={false} isStroke={true} icon="" onClick="" style="" />
+            <Button link="" text="Add To Cart" isFilled={true} isStroke={false} icon="" onClick="" style="" /> 
           </div>
         </div>
       </div>
-
       <div className="mt-14">
         <Reviews reviews={item.reviews} />
       </div>

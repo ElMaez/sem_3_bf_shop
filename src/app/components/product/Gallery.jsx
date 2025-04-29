@@ -53,7 +53,7 @@ const Gallery = ({ images }) => {
             <Image
               src={imgUrl}
               alt={`Miniature ${index + 1}`}
-              layout="fill"
+              fill
               objectFit="cover"
             />
           </button>
