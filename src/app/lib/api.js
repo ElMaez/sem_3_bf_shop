@@ -1,13 +1,4 @@
 // Everything Api so we can just call info from one place.
-export async function getProducts() {
-  const data = await fetch(process.env.PRODUCTS_URL, {
-    next: {
-      revalidate: 3600, // cacher data i én time
-    },
-  });
-  const products = await data.json();
-  return products.products;
-}
 
 //Category API Fetch
 export async function getCategories() {

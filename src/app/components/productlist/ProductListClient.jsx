@@ -12,7 +12,7 @@ import Basket from "../other/Basket";
  import { useRouter } from 'next/navigation'
 import { getSearch } from "@/app/lib/api";
 
-const ProductListClient = ({ categories}) => {
+const ProductListClient = ({categories}) => {
 
 // Search Feature
 const [products, setProducts] = useState(null)

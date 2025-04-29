@@ -1,10 +1,10 @@
 
 import Image from "next/image";
 import ProductListClient from "@/app/components/productlist/ProductListClient";
-import { getCategories, getProducts, getSearch } from "@/app/lib/api";
+import { getCategories, getSearch } from "@/app/lib/api";
 
 export default async function Productlist() {
-  const products = await getProducts();
+  const products = await getSearch();
   const categories = await getCategories();
 
 
