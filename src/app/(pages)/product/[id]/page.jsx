@@ -10,6 +10,11 @@ export default async function Home({ params }) {
   const { id } = await params;
   const item = await getItemId(id);
 
+  //Beregner ny og gammel pris på produkterne
+  const discountPercentageDecimal = item.discountPercentage / 100;
+  const newPrice = Math.floor(item.price * (1 - discountPercentageDecimal));
+  const oldPrice = Math.floor(item.price);
+
   return (
     <main className="container mx-auto py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -19,14 +24,31 @@ export default async function Home({ params }) {
 
         <div className="flex flex-col justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2">{item.title}</h1>
-            <h2 className="text-xl text-gray-700 mb-4">{item.price} $</h2>
-            <p className="text-[#747478] mb-6">{item.description}</p>
+            <h1 className="text-3xl font-bold mb-2 mt-12">{item.title}</h1>
+            <div className="flex items-center gap-2 mb-4">
+              <h2 className="text-2xl text-gray-700">{newPrice} $</h2>
+              {item.discountPercentage > 0 && (
+                <span className="text-[#8F8A85] line-through">
+                  {oldPrice} $
+                </span>
+              )}
+            </div>
+            <p className="text-[#747478] mb-2">{item.description}</p>
+            {item.stock <= 5 && item.stock > 0 && (
+              <span className="inline-block bg-red-200 text-red-600 p-1  text-sm font-semibold mb-4">
+                Low stock
+              </span>
+            )}
+            {item.stock === 0 && (
+              <span className="inline-block bg-red-300 text-red-600 p-1  text-sm font-semibold mb-4">
+                Out of stock
+              </span>
+            )}
           </div>
         </div>
       </div>
 
-      <div className="mt-12">
+      <div className="mt-14">
         <Reviews reviews={item.reviews} />
       </div>
     </main>

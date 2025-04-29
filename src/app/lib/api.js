@@ -20,7 +20,6 @@ export async function getCategories() {
     }
   );
   const categories = await dataCategories.json();
-  console.log("kategori-data", categories);
   return categories;
 }
 export async function getItemId(id) {
@@ -30,6 +29,18 @@ export async function getItemId(id) {
     },
   });
   const item = await dataID.json();
-  console.log("api.js ID :", item);
   return item;
 }
+
+//SearchParams
+export async function getSearch() {
+  const datasearch = await fetch(process.env.PRODUCTS_URL, {
+    next: {
+      revalidate: 3600, // cacher data i én time
+    },
+  });
+  const products = await datasearch.json();
+  console.log("api.js Search :", products.products);
+  return products.products;
+}
+// `q=${}`

@@ -6,8 +6,7 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import useCartStore from "@/app/stores/increaseAmount";
 
 const Card = (item) => {
-  console.log("Card wallah:", item.id);
-  console.log("images fuckhoved: ", item.images?.[0]);
+
   const discountPercentageDecimal = item.discountPercentage / 100;
   const newPrice = Math.floor(item.price * (1 - discountPercentageDecimal));
   const oldPrice = Math.floor(item.price);
@@ -38,7 +37,7 @@ const Card = (item) => {
       {" "}
       <Link
         href={`/product/${item.id}`}
-        className="after:content-[' ']  after:inset-0 hover:cursor-pointer block "
+        className="after:content-[' ']   after:inset-0 hover:cursor-pointer block "
       >
         <figure
           className="w-3xs relative overflow-hidden flex has-[img]:justify-self-center "
@@ -48,8 +47,9 @@ const Card = (item) => {
             <Image
               src={item.images[0]}
               alt={item.title}
-              layout="fill"
-              objectFit="contain"
+              fill
+              style={{objectFit:"cover"}}
+              sizes="100%"
             />
           )}
         </figure>
@@ -59,12 +59,12 @@ const Card = (item) => {
             {item.discountPercentage}%
           </span>
           {item.stock <= 5 && item.stock > 0 && (
-            <span className="absolute bg-red-600 bottom-28 right-2 p-[0.2rem] text-white">
+            <span className="absolute bg-red-200 bottom-28 right-2 p-[0.2rem] text-red-600 font-semibold">
               Low stock
             </span>
           )}
           {item.stock === 0 && (
-            <span className="absolute bg-red-600 bottom-28 right-2 p-[0.2rem] text-white">
+            <span className="absolute bg-red-200 bottom-28 right-2 p-[0.2rem] text-red-600 font-semibold">
               Out of stock
             </span>
           )}
@@ -80,6 +80,11 @@ const Card = (item) => {
       <div className="flex gap-2 items-center justify-between p-4">
         <div className="flex gap-2 items-center">
           {renderStars(item.rating)}
+          {item.reviews && (
+            <span className="text-sm text-[#8F8A85]">
+              ({item.reviews.length})
+            </span>
+          )}
         </div>
         <button onClick={handleAddToBasket} className=" hover:text-[#8F8A85]">
           <MdOutlineShoppingBag size={24} className="hover:text-[#8F8A85]" />

@@ -1,18 +1,20 @@
 "use client";
 import Link from "next/link";
 
-const Button = ({ link, text, icon, onClick }) => {
+const Button = ({ link, type, text, icon, onClick, isFilled, style  }) => {
+let filled = isFilled ? `bg-(--ButtonBgColor) text(--ButtonTextColorLight)` : `border-(--ButtonBgColor) border-2 text(--ButtonTextColorDark)`;
+
   if (link) {
     return (
       <Link href={link} className="inline-block">
-        <button className="border-2 border-black p-2">
+        <button className= {`${style} ${filled} p-2 rounded-sm`}>
           {text} {icon}
         </button>
       </Link>
     );
   } else {
     return (
-      <button className="border-2 border-black p-2" onClick={onClick}>
+    <button type={type} className={`${style} ${filled} p-2 rounded-sm`} onClick={onClick}>
         {text} {icon}
       </button>
     );
@@ -20,3 +22,6 @@ const Button = ({ link, text, icon, onClick }) => {
 };
 
 export default Button;
+
+
+//<Button link="" text="" isFilled={true} icon="" onClick="" style="" /> 

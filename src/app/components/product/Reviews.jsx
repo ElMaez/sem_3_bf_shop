@@ -21,7 +21,7 @@ const Reviews = ({ reviews }) => {
 
   return (
     <div className="mt-8">
-      <h2 className="text-xl font-semibold mb-4">
+      <h2 className="text-2xl font-semibold mb-4">
         Reviews <FaRegStar className="text-black inline-block" />
       </h2>
 
@@ -31,8 +31,8 @@ const Reviews = ({ reviews }) => {
             key={index}
             className="bg-white rounded-md shadow-md p-4 w-64 shrink-0"
           >
-            <h3 className="text-[#A49C96]">{review.reviewerName}</h3>
-            <p className="text-[#A49C96] text-sm italic mb-2">
+            <h3 className="text-[#A49C96] text-lg">{review.reviewerName}</h3>
+            <p className="text-[#A49C96] text-md italic mb-2">
               {review.comment}
             </p>
             <div className="flex items-center">
