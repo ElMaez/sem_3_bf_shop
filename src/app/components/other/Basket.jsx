@@ -32,7 +32,7 @@ export default function Basket() {
     return null;
   }
   if (cartItems.length === 0) {
-    return <p>Din indkøbskurv er tom.</p>;
+    return <p className="font-bold">Your bag is empty.</p>;
   }
 
   return (
@@ -99,6 +99,18 @@ export default function Basket() {
                   </div>
                 </div>
               </div>
+              <span className="flex">
+                <p className="font-bold ">{item.price}$</p>
+              </span>
+              <span> Quantity: {item.quantity}</span>
+            </div>
+            <div className=" justify-end grid col-end-4 row-end-2  w-fit">
+              <button
+                onClick={() => removeItem(item.id)}
+                className="hover:bg-gray-400 cursor-pointer"
+              >
+                <FaXmark size={24} />
+              </button>
             </div>
             <span className="text-[#747478] text-sm mt-2">
               Quantity: {item.quantity}
@@ -106,7 +118,7 @@ export default function Basket() {
           </li>
         ))}
       </ul>
-      <div className="mt-4 mb-2">Total: {totalPrice}$</div>
+      <p className="mt-4 mb-2">Total: {totalPrice}$</p>
       <Link
         href={"/payment"}
         className="bg-[#E1DBD6] text-black py-2 px-8 w-fit"
