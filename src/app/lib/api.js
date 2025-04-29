@@ -40,7 +40,6 @@ export async function getSearch() {
     },
   });
   const products = await datasearch.json();
-  console.log("api.js Search :", products.products);
   return products.products;
 }
 // `q=${}`

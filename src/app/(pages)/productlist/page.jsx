@@ -8,6 +8,7 @@ import { getCategories, getProducts, getSearch } from "@/app/lib/api";
 export default async function Productlist() {
   const products = await getProducts();
   const categories = await getCategories();
+  const search = await getSearch();
 
   const categoriesWithProducts = categories.filter((category) => {
     return products.some((product) => product.category === category);
@@ -21,6 +22,7 @@ export default async function Productlist() {
       <ProductListClient
         categories={categoriesWithProducts}
         products={products}
+        search={search}
       />
     </main>
   );

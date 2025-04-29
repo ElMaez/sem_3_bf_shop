@@ -5,7 +5,13 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import Basket from "../other/Basket";
 
-const ProductListClient = ({ categories, products }) => {
+// Searchbar
+ import { useEffect } from 'react'
+ import { usePathname, useSearchParams } from 'next/navigation'
+ import { useRouter } from 'next/navigation'
+
+const ProductListClient = ({ categories, products, search}) => {
+  //Category Filter
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -15,10 +21,6 @@ const ProductListClient = ({ categories, products }) => {
         ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
-  };
-
-  const handleSearch = (term) => {
-    setSearchTerm(term);
   };
 
   const filteredProducts = products.filter((product) => {
@@ -31,6 +33,28 @@ const ProductListClient = ({ categories, products }) => {
     return categoryMatch && searchMatch;
   });
 
+// Search Feature
+   const router = useRouter()
+   const pathname = usePathname()
+   const searchParams = useSearchParams()
+
+
+   useEffect(() => {
+     const url = `UseEffect: ${pathname}?${searchParams}`
+     console.log("url: ", url,"search fra api: ", search)
+
+     // You can now use the current URL
+     // ...
+     search.forEach(searchProduct => {
+      console.log("search forEach: ", searchProduct)
+      
+      // if (searchProduct.includes(url)) {
+      //   console.log("WHAT?!")
+      // }
+     });
+
+   }, [pathname, searchParams])
+  
   return (
     <section>
       <Basket />
