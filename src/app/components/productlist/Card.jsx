@@ -59,12 +59,12 @@ const Card = (item) => {
             {item.discountPercentage}%
           </span>
           {item.stock <= 5 && item.stock > 0 && (
-            <span className="absolute bg-red-600 bottom-28 right-2 p-[0.2rem] text-white">
+            <span className="absolute bg-red-200 bottom-28 right-2 p-[0.2rem] text-red-600 font-semibold">
               Low stock
             </span>
           )}
           {item.stock === 0 && (
-            <span className="absolute bg-red-600 bottom-28 right-2 p-[0.2rem] text-white">
+            <span className="absolute bg-red-200 bottom-28 right-2 p-[0.2rem] text-red-600 font-semibold">
               Out of stock
             </span>
           )}
