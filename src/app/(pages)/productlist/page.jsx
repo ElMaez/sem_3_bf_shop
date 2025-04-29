@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import ProductListClient from "@/app/components/productlist/ProductListClient";
+import { Suspense } from 'react'
 import { getCategories, getSearch } from "@/app/lib/api";
 
 export default async function Productlist() {
@@ -17,10 +18,11 @@ export default async function Productlist() {
   return (
     <main>
       <h1 className="text-2xl">Products</h1>
-
+      <Suspense fallback={<p>loading ...</p>}>
       <ProductListClient
         categories={categoriesWithProducts}
       />
+          </Suspense>
     </main>
   );
 }
