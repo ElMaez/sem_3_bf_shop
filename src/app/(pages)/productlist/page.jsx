@@ -8,11 +8,12 @@ import { getCategories, getProducts, getSearch } from "@/app/lib/api";
 export default async function Productlist() {
   const products = await getProducts();
   const categories = await getCategories();
-  const productsSearch = await getSearch();
 
   const categoriesWithProducts = categories.filter((category) => {
     return products.some((product) => product.category === category);
   });
+
+
   return (
     <main>
       <h1 className="text-2xl">Products</h1>

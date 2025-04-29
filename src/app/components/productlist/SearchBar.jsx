@@ -12,11 +12,9 @@ const SearchBar = () => {
   const searchParams = useSearchParams()
   const input = document.querySelector("input");
 
+
   function noget() {
-    console.log("Hello World!", input)
-    
-  //  let value = input.value;
-    // console.log("SearchBar: ", input)
+    console.log("Hello World")
   }
 
   useEffect(() => {
@@ -26,9 +24,9 @@ const SearchBar = () => {
     // ...
   }, [pathname, searchParams])
   
-  return <form>
+  return <form onSubmit={noget()}>
     <input  type="text" name="searchbar" className="border-2 border-amber-400 w-3xs mr-4" placeholder="Search here ..." ></input>
-    <Button type="button" onClick={noget()} link="" text="Search" isFilled={true} icon="" style=""  /> 
+    <Button type="submit" link="" text="Search" isFilled={true} icon="" style=""  /> 
   </form>;
 };
 
