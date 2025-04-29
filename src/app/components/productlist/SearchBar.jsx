@@ -10,17 +10,6 @@ const searchZus = useSearchStore((state) => state = "noget text")
     <form >
       <input placeholder="Type to search..." ></input>
       <button onClick={searchZus} type="button">Search</button>
-{
-  function BearCounter() {
-    const bears = useStore((state) => state.bears)
-    return <h1>{bears} bears around here...</h1>
-  }
-  
-  function Controls() {
-    const increasePopulation = useStore((state) => state.increasePopulation)
-    return <button onClick={increasePopulation}>one up</button>
-  }
-}
       
     </form>
   );
