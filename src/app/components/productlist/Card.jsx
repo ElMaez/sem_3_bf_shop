@@ -6,8 +6,7 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import useCartStore from "@/app/stores/increaseAmount";
 
 const Card = (item) => {
-  console.log("Card wallah:", item.id);
-  console.log("images fuckhoved: ", item.images?.[0]);
+
   const discountPercentageDecimal = item.discountPercentage / 100;
   const newPrice = Math.floor(item.price * (1 - discountPercentageDecimal));
   const oldPrice = Math.floor(item.price);
@@ -48,8 +47,9 @@ const Card = (item) => {
             <Image
               src={item.images[0]}
               alt={item.title}
-              layout="fill"
-              objectFit="contain"
+              fill
+              style={{objectFit:"cover"}}
+              sizes="100%"
             />
           )}
         </figure>

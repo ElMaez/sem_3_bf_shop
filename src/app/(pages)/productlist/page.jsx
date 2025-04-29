@@ -3,11 +3,12 @@ import Card from "@/app/components/productlist/Card";
 import Filter from "@/app/components/productlist/Filter";
 import SearchBar from "@/app/components/productlist/SearchBar";
 import ProductListClient from "@/app/components/productlist/ProductListClient";
-import { getCategories, getProducts } from "@/app/lib/api";
+import { getCategories, getProducts, getSearch } from "@/app/lib/api";
 
 export default async function Productlist() {
   const products = await getProducts();
   const categories = await getCategories();
+  const productsSearch = await getSearch();
 
   const categoriesWithProducts = categories.filter((category) => {
     return products.some((product) => product.category === category);

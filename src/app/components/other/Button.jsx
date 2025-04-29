@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 
-const Button = ({ link, text, icon, onClick, isFilled, style  }) => {
+const Button = ({ link, type, text, icon, onClick, isFilled, style  }) => {
 let filled = isFilled ? `bg-(--ButtonBgColor) text(--ButtonTextColorLight)` : `border-(--ButtonBgColor) border-2 text(--ButtonTextColorDark)`;
 
   if (link) {
@@ -14,7 +14,7 @@ let filled = isFilled ? `bg-(--ButtonBgColor) text(--ButtonTextColorLight)` : `b
     );
   } else {
     return (
-    <button className={`${style} ${filled} p-2 rounded-sm`} onClick={onClick}>
+    <button type={type} className={`${style} ${filled} p-2 rounded-sm`} onClick={onClick}>
         {text} {icon}
       </button>
     );
