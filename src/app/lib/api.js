@@ -3,7 +3,7 @@
 //Category API Fetch
 export async function getCategories() {
   const dataCategories = await fetch(
-    process.env.PRODUCTS_URL + `/category-list`,
+    "https://dummyjson.com/products" + `/category-list`,
     {
       next: {
         revalidate: 3600, // cacher data i én time
@@ -14,7 +14,7 @@ export async function getCategories() {
   return categories;
 }
 export async function getItemId(id) {
-  const dataID = await fetch(process.env.PRODUCTS_URL + `/${id}`, {
+  const dataID = await fetch("https://dummyjson.com/products" + `/${id}`, {
     next: {
       revalidate: 3600, // cacher data i én time
     },
