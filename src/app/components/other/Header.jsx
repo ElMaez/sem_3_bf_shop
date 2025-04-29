@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Logo from "@/app/assets/img/logo.png";
 import useCartStore from "@/app/stores/increaseAmount";
+import Basket from "./Basket";
 
 const Header = () => {
   const pathname = usePathname();
-  const { toggleCart } = useCartStore();
+  const { toggleCart, isCartOpen } = useCartStore();
   return (
     <header className="flex  items-center p-4  w-full gap-4">
       <div>
@@ -49,7 +50,20 @@ const Header = () => {
         <button onClick={toggleCart} className=" headerbasket cursor-pointer ">
           <MdOutlineShoppingBag size={36} />
         </button>
+        {/* {isCartOpen && (
+          <Basket
+            style={{
+              positionAnchor: "--basket",
+              inset: "auto 0 auto auto",
+              right: "1rem",
+              marginTop: "-3rem",
+            }}
+            className={`
+              p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-gray-300  text-black z-20 absolute`}
+          />
+        )} */}
       </div>
+      {/* {pathname === "/payment" && <Basket />} */}
     </header>
   );
 };
