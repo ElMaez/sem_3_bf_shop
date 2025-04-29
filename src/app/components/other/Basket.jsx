@@ -4,7 +4,6 @@ import Image from "next/image";
 import "@/app/globals.css";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-import { FaXmark } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
 
 //import states and Store
@@ -47,24 +46,14 @@ export default function Basket() {
       className={`
         p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-white   text-black z-20 absolute`}
     >
-      <h2 className="text-lg mb-4 text-[#A49C96]">ShoppingCart</h2>
+      <h2 className="text-md mb-4 text-[#A49C96]">Your basket</h2>
       <ul className="flex flex-col gap-4">
         {cartItems.map((item) => (
           <li
             key={item.id}
             className="py-2 border-b-1 border-b-[#E1DBD6] gap-4 flex-col items-start"
           >
-            <div className="flex justify-end w-full">
-              <button
-                onClick={() => removeItem(item.id)}
-                className="hover:bg-gray-400 cursor-pointer"
-              >
-                {/* <FaXmark size={24} /> */}
-                <IoCloseOutline size={24} />
-              </button>
-            </div>
             <div className="flex flex-row items-center w-full justify-between">
-              {" "}
               <div className="flex flex-row items-center">
                 <div className="relative w-16 h-16 mr-4">
                   <Image
@@ -75,17 +64,18 @@ export default function Basket() {
                   ></Image>
                 </div>
                 <div className="flex flex-col">
-                  {" "}
                   <span className="mr-4">{item.title}</span>
                   <div className="flex flex-col items-start mt-2">
-                    {" "}
-                    <div className="flex gap-4">
+                    <div className="flex gap-2 items-center">
                       <button
                         onClick={() => incrementQuantity(item.id)}
                         className="cursor-pointer text-[#747478]"
                       >
                         <FaPlus />
                       </button>
+                      <span className="text-[#747478] text-lg">
+                        {item.quantity}
+                      </span>
                       <button
                         onClick={() => decrementQuantity(item.id)}
                         className="cursor-pointer text-[#747478]"
@@ -93,38 +83,33 @@ export default function Basket() {
                         <FaMinus />
                       </button>
                     </div>
-                    <span className="flex mt-2  text-lg">
-                      {item.price}$
-                    </span>{" "}
+                    <span className="flex mt-2 text-lg">{item.price}$</span>
                   </div>
                 </div>
               </div>
-              <span className="flex">
-                <p className="font-bold ">{item.price}$</p>
-              </span>
-              <span> Quantity: {item.quantity}</span>
-            </div>
-            <div className=" justify-end grid col-end-4 row-end-2  w-fit">
               <button
                 onClick={() => removeItem(item.id)}
-                className="hover:bg-gray-400 cursor-pointer"
+                className="hover:bg-[#E1DBD6] cursor-pointer"
               >
-                <FaXmark size={24} />
+                <IoCloseOutline size={24} />
               </button>
             </div>
-            <span className="text-[#747478] text-sm mt-2">
-              Quantity: {item.quantity}
-            </span>
+            <span className="text-[#747478] text-sm mt-2"></span>
           </li>
         ))}
       </ul>
-      <p className="mt-4 mb-2">Total: {totalPrice}$</p>
-      <Link
-        href={"/payment"}
-        className="bg-[#E1DBD6] text-black py-2 px-8 w-fit"
-      >
-        Go to payment
-      </Link>
+      <div className="mt-4 flex justify-between items-center">
+        <p className="">Total:</p>
+        <p className="font-semibold text-lg">{totalPrice}$</p>
+      </div>
+      <div className="flex justify-center mt-4">
+        <Link
+          href={"/payment"}
+          className="bg-[#E1DBD6] text-black py-2 px-8 w-fit"
+        >
+          Go to payment
+        </Link>
+      </div>
     </div>
   );
 }

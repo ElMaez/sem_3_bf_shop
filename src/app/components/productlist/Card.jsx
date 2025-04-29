@@ -38,7 +38,7 @@ const Card = (item) => {
       {" "}
       <Link
         href={`/product/${item.id}`}
-        className="after:content-[' ']  after:inset-0 hover:cursor-pointer block "
+        className="after:content-[' ']   after:inset-0 hover:cursor-pointer block "
       >
         <figure
           className="w-3xs relative overflow-hidden flex has-[img]:justify-self-center "
@@ -80,6 +80,11 @@ const Card = (item) => {
       <div className="flex gap-2 items-center justify-between p-4">
         <div className="flex gap-2 items-center">
           {renderStars(item.rating)}
+          {item.reviews && (
+            <span className="text-sm text-[#8F8A85]">
+              ({item.reviews.length})
+            </span>
+          )}
         </div>
         <button onClick={handleAddToBasket} className=" hover:text-[#8F8A85]">
           <MdOutlineShoppingBag size={24} className="hover:text-[#8F8A85]" />
