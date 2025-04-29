@@ -1,13 +1,39 @@
 "use client";
+
 import { useState } from "react";
 import Filter from "./Filter";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import Basket from "../other/Basket";
 
-const ProductListClient = ({ categories, products }) => {
+// Searchbar
+ import { useEffect } from 'react'
+ import { useSearchParams } from 'next/navigation'
+ import { useRouter } from 'next/navigation'
+import { getSearch } from "@/app/lib/api";
+
+const ProductListClient = ({ categories}) => {
+
+// Search Feature
+const [products, setProducts] = useState(null)
+const router = useRouter()
+const searchParams = useSearchParams();
+let filteredProducts = [];
+
+ useEffect( () => {
+    const andet = async()=> {
+    await getSearch(searchParams.get(`q`)).then((res)=>{
+      setProducts(res);
+    }) 
+   }
+   andet();
+   router.refresh()
+ }, [searchParams])
+
+
+  //Category Filter
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm] = useState("");
 
   const toggleCategory = (category) => {
     setSelectedCategories((prev) =>
@@ -16,12 +42,9 @@ const ProductListClient = ({ categories, products }) => {
         : [...prev, category]
     );
   };
-
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-  };
-
-  const filteredProducts = products.filter((product) => {
+ if (products!= null ){
+  console.log("products!=null")
+   filteredProducts = products.filter((product) => {
     const categoryMatch =
       selectedCategories.length === 0 ||
       selectedCategories.includes(product.category);
@@ -30,6 +53,7 @@ const ProductListClient = ({ categories, products }) => {
       product.title.toLowerCase().includes(searchTerm.toLowerCase());
     return categoryMatch && searchMatch;
   });
+} 
 
   return (
     <section>
@@ -51,7 +75,8 @@ const ProductListClient = ({ categories, products }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
         {" "}
-        {filteredProducts.map((item) => (
+        {
+        filteredProducts.map((item) => (
           <Card key={item.id} {...item} />
         ))}
       </div>

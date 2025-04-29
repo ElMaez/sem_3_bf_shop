@@ -32,15 +32,26 @@ export async function getItemId(id) {
   return item;
 }
 
-//SearchParams
-export async function getSearch() {
-  const datasearch = await fetch(process.env.PRODUCTS_URL, {
-    next: {
-      revalidate: 3600, // cacher data i én time
-    },
-  });
-  const products = await datasearch.json();
-  console.log("api.js Search :", products.products);
-  return products.products;
+//SearchParams på Client
+export async function getSearch(input) {
+  if (input == null) {
+    const data = await fetch("https://dummyjson.com/products", {
+      next: {
+        revalidate: 3600, // cacher data i én time
+      },
+    });
+    const products = await data.json();
+    return products.products;
+  } else {
+    const datasearch = await fetch(
+      `https://dummyjson.com/products/search?q=${input}`,
+      {
+        next: {
+          revalidate: 3600, // cacher data i én time
+        },
+      }
+    );
+    const products = await datasearch.json();
+    return products.products;
+  }
 }
-// `q=${}`

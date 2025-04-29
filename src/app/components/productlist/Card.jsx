@@ -48,7 +48,7 @@ const Card = (item) => {
               src={item.images[0]}
               alt={item.title}
               fill
-              style={{objectFit:"cover"}}
+              style={{objectFit:"contain"}}
               sizes="100%"
             />
           )}
