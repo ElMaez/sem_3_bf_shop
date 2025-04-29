@@ -34,11 +34,11 @@ export async function getItemId(id) {
 
 // Search API
 export async function getSearch(input) {
-  const dataSearch = await fetch(process.env.SEARCH_URL + `${input}`, {
+  const dataSearch = await fetch(process.env.SEARCH_URL + "q=" + input, {
     next: {
       revalidate: 3600, // cacher data i én time
     },
   });
-  const search = await dataSearch.json();
-  return search;
+  const { products } = await dataSearch.json();
+  return products;
 }
