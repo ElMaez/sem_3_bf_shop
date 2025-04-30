@@ -13,7 +13,7 @@ const Header = () => {
   const pathname = usePathname();
   const { toggleCart, isCartOpen } = useCartStore();
   return (
-    <header className="flex  items-center p-4  w-full gap-4 justify-between">
+    <header className="flex  items-center py-4  w-full gap-4 justify-between">
       <div>
         <Link href="/">
           <h1 className="text-gold font-bold text-5xl mr-4">
