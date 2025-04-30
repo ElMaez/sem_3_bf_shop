@@ -5,7 +5,9 @@ import { IoCloseOutline } from "react-icons/io5";
 
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-import { FaXmark } from "react-icons/fa6";
+import Button from "@/app/components/other/Button";
+import Popover from "./Popover";
+
 export default function Payment() {
   const cartItems = useCartStore((state) => state.items);
   const incrementQuantity = useCartStore(
@@ -21,9 +23,13 @@ export default function Payment() {
 
   return (
     <main className="mt-20">
-      <h1 className="text-3xl">Your Basket ({totalItems} item) </h1>
-      <div className="max-w">
-        <h2 className="text-xl font-bold mb-4 text-center">Your bag</h2>
+      <div className="max-w paymentpop">
+        <h1 className="text-3xl font-bold text-center text-(--TextGrey)">
+          Your Basket
+        </h1>
+        <p className="text-xl mb-4 text-center text-(--TextGrey)">
+          ({totalItems} item)
+        </p>
         <ul className="flex flex-col gap-4">
           {cartItems.map((item) => (
             <li
@@ -75,16 +81,21 @@ export default function Payment() {
             </li>
           ))}
         </ul>
-        <div className="mt-8 font-bold flex justify-between">
-          <p>Total:</p> {totalPrice}$
+        <div className="mt-8 mb-8 text-xl font-semibold flex justify-between">
+          <p>Total:</p> <p>{totalPrice}$</p>
         </div>
-        <button
-          href={"/payment"}
-          className="bg-black text-white font-bold py-2 px-8 rounded-[0.5rem]  mt-8 text-center cursor-pointer hover:bg-gray-400"
+        <Popover
+          content={
+            <p className="self-center justify-self-center font-semibold text-2xl">
+              Thank you for your purchase!
+            </p>
+          }
         >
-          Pay
-        </button>
+          <Button text="Payment" isFilled={true} isStroke={false} />
+        </Popover>
       </div>
     </main>
   );
 }
+
+// className=" opacity-0 translate-[0 -100%] transition-[.6s]  open:opacity-100 translate-0 starting:open:opacity-0 tanslate[0 100%]"

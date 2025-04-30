@@ -6,6 +6,7 @@
 
   --ButtonBgColor: #e1dbd6;
   --ButtonText: black;
+  --TextGrey: #747478;
 }
 
 @theme inline {
@@ -39,4 +40,7 @@ body {
 
 @theme {
   --color-gold: #e5d38eff;
+}
+.paymentpop {
+  anchor-name: --paymentpopup;
 }
