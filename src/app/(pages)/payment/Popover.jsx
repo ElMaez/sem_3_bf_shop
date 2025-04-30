@@ -37,7 +37,6 @@ function Popover({ children, content, trigger = "click" }) {
 
   return (
     <div
-      style={{ positionAnchor: "--paymentpopup" }}
       ref={wrapperRef}
       onMouseEnter={handleMouseOver}
       onMouseLeave={handleMouseLeft}

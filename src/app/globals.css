@@ -41,6 +41,3 @@ body {
 @theme {
   --color-gold: #e5d38eff;
 }
-.paymentpop {
-  anchor-name: --paymentpopup;
-}
