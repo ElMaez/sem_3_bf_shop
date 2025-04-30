@@ -3,8 +3,6 @@ import Link from "next/link";
 import "@/app/globals.css";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import Logo from "@/app/assets/img/logo.png";
 import useCartStore from "@/app/stores/increaseAmount";
 import Button from "./Button";
 
@@ -13,16 +11,16 @@ const Header = () => {
   const pathname = usePathname();
   const { toggleCart, isCartOpen } = useCartStore();
   return (
-    <header className="flex  items-center py-4  w-full gap-4 justify-between">
+    <header className="flex items-center py-4 w-full justify-between">
       <div>
         <Link href="/">
-          <h1 className="text-gold font-bold text-5xl mr-4">
-            All in one Store
+          <h1 className="text-[#8F8A85] font-bold text-5xl mr-4">
+            All In One Store
           </h1>
         </Link>
       </div>
-      <nav className=" flex  mr-auto">
-        <ul className="flex flex-row gap-8">
+      <nav className="flex m-auto">
+        <ul className="flex flex-row gap-20 ">
           <li>
             <Link
               href="/"
@@ -40,11 +38,11 @@ const Header = () => {
               href="/productlist"
               className={` ${
                 pathname === "/productlist"
-                  ? "bg-black py-4 px-2 text-white font-bold"
+                  ? "bg-(--ButtonBgColor) py-4 px-2 text-black"
                   : "text-black hover:underline "
               }`}
             >
-              Product
+              Shop
             </Link>
           </li>
         </ul>
