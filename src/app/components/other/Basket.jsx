@@ -39,7 +39,7 @@ export default function Basket() {
       style={{
         positionAnchor: "--basket",
         inset: "auto 0 auto auto",
-        right: "1rem",
+        right: "3rem",
         marginTop: "-3rem",
         borderColor: "#E1DBD6",
       }}

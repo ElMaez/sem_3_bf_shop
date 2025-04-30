@@ -13,7 +13,7 @@ const Header = () => {
   const pathname = usePathname();
   const { toggleCart, isCartOpen } = useCartStore();
   return (
-    <header className="flex  items-center p-4  w-full gap-4">
+    <header className="flex  items-center p-4  w-full gap-4 justify-between">
       <div>
         <Link href="/">
           <Image
@@ -52,7 +52,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div>
+      <div className="flex">
         <Button
           link=""
           text=""
@@ -66,12 +66,12 @@ const Header = () => {
           style={{
             positionAnchor: "--basket",
             inset: "auto, 0, auto, auto",
-            right: "1.8rem",
+            right: "1.6rem",
 
-            marginTop: "-2.9rem",
+            marginTop: "0.5rem",
             borderColor: "#E1DBD6",
           }}
-          className="font-bold absolute text-zinc-700 text-[1.2rem]"
+          className="font-bold   text-zinc-700 text-[1rem]"
         >
           {totalItems}
         </div>
