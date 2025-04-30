@@ -22,7 +22,7 @@ const Filter = ({ category, checked, onChange }) => {
           </svg>
         )}
       </div>
-      <span className="ml-2 text-[#8F8A85]">{category}</span>{" "}
+      <span className="ml-2 text-[#8F8A85]">{category}</span>
     </label>
   );
 };

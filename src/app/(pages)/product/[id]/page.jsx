@@ -8,10 +8,10 @@ import useCartStore from "@/app/stores/increaseAmount";
 
 import { getItemId } from "@/app/lib/api";
 import Basket from "@/app/components/other/Basket";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 export default function Home({ params }) {
-  const { id } = params;
+  const { id } = use(params);
   const [item, setItem] = useState(null);
   const addItemToBasket = useCartStore((state) => state.addItem);
 
@@ -38,7 +38,7 @@ export default function Home({ params }) {
   };
 
   return (
-    <main className="container mx-auto py-8">
+    <main className="mx-auto py-8">
       <Basket />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex flex-col">
@@ -74,12 +74,14 @@ export default function Home({ params }) {
               text="Payment"
               isFilled={false}
               isStroke={true}
+              style="hover:shadow-lg"
             />
             <Button
               text="Add To Cart"
               isFilled={true}
               isStroke={false}
               onClick={handleAddToCart}
+              style="hover:shadow-lg"
             />
           </div>
         </div>
