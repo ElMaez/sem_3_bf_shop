@@ -83,9 +83,12 @@ const Card = (item) => {
             </span>
           )}
         </div>
-        <button onClick={handleAddToBasket} className=" hover:text-[#8F8A85]">
-          <MdOutlineShoppingBag size={24} className="hover:text-[#8F8A85]" />
-        </button>
+        <div className="flex items-center gap-1">
+          <p className="text-xs text-[#8F8A85]">Add to basket</p>
+          <button onClick={handleAddToBasket} className=" hover:text-[#8F8A85]">
+            <MdOutlineShoppingBag size={24} className="hover:text-[#8F8A85]" />
+          </button>
+        </div>
       </div>
     </section>
   );
