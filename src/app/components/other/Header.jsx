@@ -9,6 +9,7 @@ import useCartStore from "@/app/stores/increaseAmount";
 import Button from "./Button";
 
 const Header = () => {
+  const totalItems = useCartStore((state) => state.GetTotalItems());
   const pathname = usePathname();
   const { toggleCart, isCartOpen } = useCartStore();
   return (
@@ -52,11 +53,30 @@ const Header = () => {
         </ul>
       </nav>
       <div>
+        <Button
+          link=""
+          text=""
+          isFilled={false}
+          isStroke={false}
+          icon={<MdOutlineShoppingBag size={36} />}
+          onClick={toggleCart}
+          style="headerbasket cursor-pointer"
+        />
+        <div
+          style={{
+            positionAnchor: "--basket",
+            inset: "auto, 0, auto, auto",
+            right: "1.8rem",
 
-      <Button link="" text="" isFilled={false} isStroke={false} icon={<MdOutlineShoppingBag size={36}/>}  onClick={toggleCart} style="headerbasket cursor-pointer"/>
-      
+            marginTop: "-2.9rem",
+            borderColor: "#E1DBD6",
+          }}
+          className="font-bold absolute text-zinc-700 text-[1.2rem]"
+        >
+          {totalItems}
+        </div>
       </div>
-
+      {/* {pathname === "/payment" && <Basket />} */}
     </header>
   );
 };
