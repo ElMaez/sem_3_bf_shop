@@ -14,7 +14,7 @@ let stroke = isStroke ? `border-2 border-(--ButtonBgColor) text(--ButtonText)` :
       </Link>
     );
   } else if (icon == true) {
-    <button type={type} className={`${style} ${filled} ${stroke} rounded-xs`} onClick={onClick}>
+    <button type={type} className={`${style} ${filled} ${stroke}`} onClick={onClick}>
         {text} {icon}
       </button>
   } else {
