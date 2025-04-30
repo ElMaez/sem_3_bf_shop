@@ -52,7 +52,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="flex">
+      <div className="flex flex-row-reverse border-2">
         <Button
           link=""
           text=""
@@ -60,7 +60,7 @@ const Header = () => {
           isStroke={false}
           icon={<MdOutlineShoppingBag size={36} />}
           onClick={toggleCart}
-          style="headerbasket cursor-pointer"
+          style="headerbasket cursor-pointer border-2 "
         />
         <div
           style={{
@@ -71,7 +71,7 @@ const Header = () => {
             marginTop: "0.5rem",
             borderColor: "#E1DBD6",
           }}
-          className="font-bold   text-zinc-700 text-[1rem]"
+          className="font-bold  text-zinc-700 text-[1rem]"
         >
           {totalItems}
         </div>
