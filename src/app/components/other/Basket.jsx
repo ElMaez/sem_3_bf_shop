@@ -44,7 +44,7 @@ export default function Basket() {
         borderColor: "#E1DBD6",
       }}
       className={`
-        p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-white   text-black z-20 absolute`}
+        p-4 border-2 grid grid-rows-[auto 1fr 1fr] bg-white rounded-xs  text-black z-20 absolute`}
     >
       <h2 className="text-md mb-4 text-[#A49C96]">Your basket</h2>
       <ul className="flex flex-col gap-4">
@@ -99,16 +99,17 @@ export default function Basket() {
         ))}
       </ul>
       <div className="mt-4 flex justify-between items-center">
-        <p className="">Total:</p>
+        <p>Total:</p>
         <p className="font-semibold text-lg">{totalPrice}$</p>
       </div>
       <div className="flex justify-center mt-4">
-        <Link
-          href={"/payment"}
-          className="bg-[#E1DBD6] text-black py-2 px-8 w-fit"
-        >
-          Go to payment
-        </Link>
+        <Button
+          link="/payment"
+          text="Go to payment"
+          isFilled={true}
+          isStroke={false}
+          style="cursor-pointer hover:shadow-md"
+        />
       </div>
     </div>
   );
