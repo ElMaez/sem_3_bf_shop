@@ -86,7 +86,7 @@ export default function Payment() {
         </div>
         <Popover
           content={
-            <p className="self-center justify-self-center font-semibold text-2xl">
+            <p className="self-center justify-self-center font-semibold text-xl">
               Thank you for your purchase!
             </p>
           }

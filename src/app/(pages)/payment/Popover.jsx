@@ -46,9 +46,9 @@ function Popover({ children, content, trigger = "click" }) {
       <div onClick={() => setShow(!show)}>{children}</div>
       <div
         hidden={!show}
-        className=" absolute top-[0%] left-[0%] z-50 transition-all bg-amber-500 "
+        className=" absolute bottom-[120%] z-50 transition-all bg-amber-500 "
       >
-        <div className="rounded-xs w-[500px] h-52 bg-white shadow-[10px_30px_150px_rgba(46,38,92,0.25)] p-[1rem] grid">
+        <div className="rounded-xs w-[300px] h-32 bg-white shadow-[10px_30px_150px_rgba(46,38,92,0.25)] p-[1rem] grid">
           {content}
         </div>
       </div>
