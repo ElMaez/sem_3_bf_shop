@@ -6,6 +6,7 @@
 
   --ButtonBgColor: #e1dbd6;
   --ButtonText: black;
+  --TextGrey: #747478;
 }
 
 @theme inline {
@@ -35,4 +36,7 @@ body {
 
 .headerbasket {
   anchor-name: --basket;
+}
+.paymentpop {
+  anchor-name: --paymentpopup;
 }
