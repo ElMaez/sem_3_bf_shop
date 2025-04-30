@@ -6,7 +6,6 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import useCartStore from "@/app/stores/increaseAmount";
 
 const Card = (item) => {
-
   const discountPercentageDecimal = item.discountPercentage / 100;
   const newPrice = Math.floor(item.price * (1 - discountPercentageDecimal));
   const oldPrice = Math.floor(item.price);
@@ -34,7 +33,6 @@ const Card = (item) => {
 
   return (
     <section className="border-2 border-[#F9F6F2] relative grid shadow-md">
-      {" "}
       <Link
         href={`/product/${item.id}`}
         className="after:content-[' ']   after:inset-0 hover:cursor-pointer block "
@@ -48,14 +46,13 @@ const Card = (item) => {
               src={item.images[0]}
               alt={item.title}
               fill
-              style={{objectFit:"contain"}}
+              style={{ objectFit: "contain" }}
               sizes="100%"
             />
           )}
         </figure>
         <section className="p-4">
           <span className="absolute bg-amber-300 font-medium z-10 top-0.5 left-0.5 text-black p-[0.2rem] shadow-sm">
-            {" "}
             {item.discountPercentage}%
           </span>
           {item.stock <= 5 && item.stock > 0 && (

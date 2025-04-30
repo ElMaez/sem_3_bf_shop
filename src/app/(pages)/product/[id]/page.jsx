@@ -1,20 +1,41 @@
+"use client";
 import Image from "next/image";
 
 import Gallery from "@/app/components/product/Gallery";
 import Reviews from "@/app/components/product/Reviews";
 import Button from "@/app/components/other/Button";
+import useCartStore from "@/app/stores/increaseAmount";
 
 import { getItemId } from "@/app/lib/api";
 import Basket from "@/app/components/other/Basket";
+import { useEffect, useState } from "react";
 
-export default async function Home({ params }) {
-  const { id } = await params;
-  const item = await getItemId(id);
+export default function Home({ params }) {
+  const { id } = params;
+  const [item, setItem] = useState(null);
+  const addItemToBasket = useCartStore((state) => state.addItem);
+
+  useEffect(() => {
+    const fetchItem = async () => {
+      const fetchedItem = await getItemId(id);
+      setItem(fetchedItem);
+    };
+
+    fetchItem();
+  }, [id]);
+
+  if (!item) {
+    return <div>Loading...</div>;
+  }
 
   //Beregner ny og gammel pris på produkterne
   const discountPercentageDecimal = item.discountPercentage / 100;
   const newPrice = Math.floor(item.price * (1 - discountPercentageDecimal));
   const oldPrice = Math.floor(item.price);
+
+  const handleAddToCart = () => {
+    addItemToBasket(item);
+  };
 
   return (
     <main className="container mx-auto py-8">
@@ -24,7 +45,7 @@ export default async function Home({ params }) {
           <Gallery {...item} />
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between h-full">
           <div>
             <h1 className="text-3xl font-bold mb-2 mt-12">{item.title}</h1>
             <div className="flex items-center gap-2 mb-4">
@@ -46,13 +67,24 @@ export default async function Home({ params }) {
                 Out of stock
               </span>
             )}
-
-            <Button link="" text="Payment" isFilled={false} isStroke={true} icon="" onClick="" style="" />
-            <Button link="" text="Add To Cart" isFilled={true} isStroke={false} icon="" onClick="" style="" /> 
+          </div>
+          <div className="mb-24 flex gap-2">
+            <Button
+              link="/payment"
+              text="Payment"
+              isFilled={false}
+              isStroke={true}
+            />
+            <Button
+              text="Add To Cart"
+              isFilled={true}
+              isStroke={false}
+              onClick={handleAddToCart}
+            />
           </div>
         </div>
       </div>
-      <div className="mt-14">
+      <div className="mt-14 ml-4">
         <Reviews reviews={item.reviews} />
       </div>
     </main>
