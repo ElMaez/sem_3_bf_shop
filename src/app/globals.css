@@ -5,8 +5,7 @@
   --foreground: #171717;
 
   --ButtonBgColor: #e1dbd6;
-  --ButtonTextColorDark: black;
-  --ButtonTextColorLight: rgb(255, 255, 255);
+  --ButtonText: black;
 }
 
 @theme inline {
