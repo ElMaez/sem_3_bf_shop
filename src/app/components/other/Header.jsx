@@ -52,9 +52,8 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="flex">
+      <div className=" relative">
         <Button
-          link=""
           text=""
           isFilled={false}
           isStroke={false}
@@ -62,19 +61,12 @@ const Header = () => {
           onClick={toggleCart}
           style="headerbasket cursor-pointer"
         />
-        <div
-          style={{
-            positionAnchor: "--basket",
-            inset: "auto, 0, auto, auto",
-            right: "1.6rem",
-
-            marginTop: "0.5rem",
-            borderColor: "#E1DBD6",
-          }}
-          className="font-bold   text-zinc-700 text-[1rem]"
+        <span
+          className="font-bold absolute top-0 right-1 translate-x-1/2 translate-y-1/2
+            text-zinc-700 text-[1rem]"
         >
           {totalItems}
-        </div>
+        </span>
       </div>
       {/* {pathname === "/payment" && <Basket />} */}
     </header>
