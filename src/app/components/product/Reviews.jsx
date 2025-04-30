@@ -25,7 +25,7 @@ const Reviews = ({ reviews }) => {
         Reviews <FaRegStar className="text-black inline-block" />
       </h2>
 
-      <div className="flex flex-row overflow-x-auto gap-4 py-4">
+      <div className="flex flex-row overflow-x-auto gap-4 py-4 ml-[-1rem]">
         {reviews.map((review, index) => (
           <div
             key={index}

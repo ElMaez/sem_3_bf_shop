@@ -28,7 +28,7 @@ const Gallery = ({ images }) => {
 
   return (
     <section className="flex flex-col items-center">
-      <div className="flex justify-center items-center mb-4">
+      <div className="flex justify-center items-center mb-4 shadow-md">
         {selectedImage && (
           <Image
             src={selectedImage}
